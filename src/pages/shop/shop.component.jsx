@@ -1,7 +1,5 @@
 import React from "react";
 
-import { createStructuredSelector } from "reselect";
-
 import CollectionsOverview from "../../components/collections-overview/collections-overview.component";
 import CollectionPage from "../collection/collection.component";
 import { Route } from "react-router-dom";
