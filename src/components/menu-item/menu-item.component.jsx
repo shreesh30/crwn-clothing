@@ -14,7 +14,7 @@ const MenuItem = ({ title, imageUrl, size, history, linkUrl, match }) => (
     size={size}
     onClick={() => history.push(`${match.url}${linkUrl}`)}
   >
-    <BackgroundImageContainer className="background-image" />
+    <BackgroundImageContainer imageUrl={imageUrl} />
     <ContentContainer>
       <ContentTitle>{title.toUpperCase()}</ContentTitle>
       <ContentSubtitle>SHOP NOW</ContentSubtitle>
