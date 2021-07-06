@@ -33,11 +33,26 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
       console.log("error creating user", error.message);
     }
   }
-
+  // console.log("executed");
   return userRef;
 };
 firebase.initializeApp(config);
 
+export const addCollectionAndDocuments = async (
+  collectionKey,
+  objectsToAdd
+) => {
+  // console.log(collectionKey);
+  const collectionRef = firestore.collection(collectionKey);
+
+  const batch = firestore.batch();
+  objectsToAdd.forEach((obj) => {
+    const newDocRef = collectionRef.doc();
+    batch.set(newDocRef, obj);
+    // console.log(newDocRef);
+  });
+  return await batch.commit();
+};
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
