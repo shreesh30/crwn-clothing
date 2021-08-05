@@ -1,10 +1,13 @@
 import React from "react";
 
+import { connect } from "react-redux";
 import FormInput from "../form-input/form-input.component";
 
 import CustomButton from "../../components/custom-button/custom-button.component";
 
 import { auth, SignInWithGoogle } from "../../firebase/firebase.utils.js";
+import { googleSignInStart } from "../../redux/user/user.actions";
+
 import {
   SignInContainer,
   SignInTitle,
@@ -40,6 +43,7 @@ class SignIn extends React.Component {
     this.setState({ [name]: value }); // this statement sees if there is any change in email & password and if there is then it sets email=value and password=value
   };
   render() {
+    const { googleSignInStart } = this.props;
     return (
       <SignInContainer>
         <SignInTitle>I already have an account</SignInTitle>
@@ -63,7 +67,11 @@ class SignIn extends React.Component {
           />
           <ButtonsBarContainer>
             <CustomButton type="submit">Sign In</CustomButton>
-            <CustomButton onClick={SignInWithGoogle} isGoogleSignIn>
+            <CustomButton
+              type="button"
+              onClick={googleSignInStart}
+              isGoogleSignIn
+            >
               Sign In with Google
             </CustomButton>
           </ButtonsBarContainer>
@@ -73,4 +81,8 @@ class SignIn extends React.Component {
   }
 }
 
-export default SignIn;
+const mapDispatchToProps = (dispatch) => ({
+  googleSignInStart: () => dispatch(googleSignInStart()),
+});
+
+export default connect(null, mapDispatchToProps)(SignIn);
