@@ -5,7 +5,8 @@ import FormInput from "../form-input/form-input.component";
 
 import CustomButton from "../../components/custom-button/custom-button.component";
 
-import { auth, SignInWithGoogle } from "../../firebase/firebase.utils.js";
+// import { auth, SignInWithGoogle } from "../../firebase/firebase.utils.js";
+import { auth } from "../../firebase/firebase.utils.js";
 import { googleSignInStart } from "../../redux/user/user.actions";
 
 import {
